@@ -106,8 +106,8 @@ Int_t ReCenter::Init()
     else{
       for (int sub = 0; sub < _numSubEvents; sub++) // event plane Psi histograms
       {
-          getep_sub_recen[0][sub]     = (TProfile2D*)mRecenteringInputFile -> Get(Form("p_mq1x_epd_ABCD_wt_sub_%d",sub + 1));
-          getep_sub_recen[1][sub]     = (TProfile2D*)mRecenteringInputFile -> Get(Form("p_mq1y_epd_ABCD_wt_sub_%d",sub + 1));
+          getep_sub_recen[0][sub]     = (TProfile2D*)mRecenteringInputFile -> Get(Form("p_mq1x_epd_ABCD_sub_%d",sub + 1));
+          getep_sub_recen[1][sub]     = (TProfile2D*)mRecenteringInputFile -> Get(Form("p_mq1y_epd_ABCD_sub_%d",sub + 1));
 
        // sub w/ eta weight 
           getep_sub_wt_recen[0][sub]     = (TProfile2D*)mRecenteringInputFile -> Get(Form("p_mq1x_epd_ABCD_wt_sub_%d",sub + 1));
@@ -447,7 +447,7 @@ Int_t ReCenter::Make()
 	{
 	  mEpProManager->FillPsiRaw(sub, subEvents[sub].GetEventPsi(1));
 	  mEpProManager->FillPsiRaw_wt(sub, subEvents_wt[sub].GetEventPsi(1));
-	  mEpProManager->FillPsiRaw_tpc(sub, subEvents_wt[sub].GetEventPsi(2));
+	  mEpProManager->FillPsiRaw_tpc(sub, subEvents_tpc[sub].GetEventPsi(2));
      	  subQx[sub] = subEvents[sub].GetQx(1);
      	  subQy[sub] = subEvents[sub].GetQy(1);
      	  subQx_wt[sub] = subEvents_wt[sub].GetQx(1);
@@ -531,10 +531,9 @@ Int_t ReCenter::Make()
 	{ // recenter event plane, store shift parameter
 
         	if(subEvents_wt[i].GetEventPsi(1) == -99){continue;} //Empty subevent
-	        mEpProManager->FillPsiRec_wt(i, subEvents[i].GetEventPsi(1));
+	        mEpProManager->FillPsiRec_wt(i, subEvents_wt[i].GetEventPsi(1));
      	  	//subQxRec_wt[i] = subEvents_wt[i].GetQx(1);
      	  	//subQyRec_wt[i] = subEvents_wt[i].GetQy(1);
-        	//hPsiRecenteredSub[i]->Fill(subEvents[i].GetPsi(harmonic)[0]);
                 for(int iorder=0; iorder<20; iorder++)
                 {
                     // first order shift parameter
