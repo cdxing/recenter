@@ -1,5 +1,5 @@
-#ifndef EventPlane_h
-#define EventPlane_h
+#ifndef ReCenter_h
+#define ReCenter_h
 
 #include "StMaker.h"
 #include "StRoot/StEpdUtil/StEpdGeom.h"
@@ -57,10 +57,16 @@ class ReCenter : public StMaker {
 
 	// get the recenterpar
         TProfile2D *getep_sub_recen[2][_numSubEvents];
+        TProfile2D *getep_full_recen[2];
 
-        TString mOutPut_ReC;
+        TProfile2D *getep_sub_wt_recen[2][_numSubEvents];
+        TProfile2D *getep_full_wt_recen[2];
 
-        TFile *mFile_ReC;
+        TProfile2D *getep_sub_tpc_recen[2][_numSubEvents];
+        TProfile2D *getep_full_tpc_recen[2];
+        TString mOutPut_Rec;
+
+        TFile *mFile_Rec;
 
 
         ClassDef(ReCenter, 1)
