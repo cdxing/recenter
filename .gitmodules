@@ -1,0 +1,3 @@
+[submodule "StRoot/IClasses"]
+	path = StRoot/IClasses
+	url = git@github.com:cdxing/IClasses.git
