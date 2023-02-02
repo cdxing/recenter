@@ -1,3 +1,6 @@
 [submodule "StRoot/IClasses"]
 	path = StRoot/IClasses
 	url = git@github.com:cdxing/IClasses.git
+[submodule "StRoot/ConfigReader"]
+	path = StRoot/ConfigReader
+	url = git@github.com:cdxing/ConfigReader.git
